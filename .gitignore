@@ -1,0 +1,11 @@
+# Ignorar pastas comuns
+node_modules/
+.venv/
+__pycache__/
+
+# Ignorar arquivos de configuração locais
+.env
+*.log
+
+main_*.py
+main-*.py

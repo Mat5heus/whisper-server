@@ -8,6 +8,15 @@ class TranscriberConfig(BaseModel):
     silence_threshold: confloat(ge=0.0) | str = 'auto'
     silence_timeout: confloat(ge=0.5) = 3.0
     verbose: bool = False
+    noise_reduction: confloat(ge=0.0, le=1.0) = 0.75
+    language: str = 'pt'
+    port: conint(gt=1024, lt=65535) = 5000
+
+    @validator('language')
+    def validate_language(cls, v):
+        if len(v) != 2 or not v.isalpha():
+            raise ValueError("Idioma deve ser código de 2 letras (ex: 'pt', 'en')")
+        return v.lower()
 
     @validator('model')
     def validate_model(cls, v):

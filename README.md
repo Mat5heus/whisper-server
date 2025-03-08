@@ -3,7 +3,14 @@
 ## Overview
 A project for real-time audio transcription utilizing the [OpenAI Whisper](https://github.com/openai/whisper) library . The system is capable of capturing audio, identifying voice, recording, and processing it to transcribe.
 
-### Prerequisites
+## Setup & Usage
+
+Clone this repository from GitHub to your local machine:
+```bash
+git clone https://github.com/Mat5heus/whisper-server.git
+cd whisper-server
+```
+
 Ensure you have Python 3 installed and a virtual environment created if preferred:
 ```bash
 python -m venv venv
@@ -15,13 +22,7 @@ source venv/bin/activate
 .\venv\Scripts\activate
 ```
 
-## Setup & Usage
-Clone this repository from GitHub to your local machine:
-```bash
-git clone https://github.com/Mat5heus/whisper-server.git
-cd whisper-server
-```
-
+### Prerequisites
 Install dependencies from `requirements.txt` using pip:
 ```bash
 pip install -r requirements.txt
@@ -32,24 +33,24 @@ Now you are ready to run the application. You can start a local server by execut
 python main.py
 ```
 
- **Argumentos de Linha de Comando (opcional):**
-   Você pode passar argumentos adicionais para personalizar o comportamento do programa. Por exemplo, para especificar a taxa de amostragem e o tamanho do bloco de áudio:
+**Command Line Arguments (Optional):**
+You can provide additional command-line arguments to customize the program's behavior. For instance, to set model size rate and language:
    ```bash
-   python main.py -b small -l es
+   python main.py -b small -l pt
    ```
 
-## Descrição dos Argumentos
+## Argument Description
 
-- `-r --rate`: Define a taxa de amostragem (Hz). Default=16000.
-- `-c --chunk`: Define o tamanho do bloco de áudio. Default=1024.
-- `-b --buffer`: Define a duração do buffer em segundos. Default=5.
-- `-m --model`: Define o modelo do Whisper ('tiny', 'base', etc.). Default=tiny'.
-- `-sd --silence_threshold`: Define o limiar de silêncio. Default='auto'.
-- `-st --silence_timeout`: Define o tempo de silêncio para parar a transcrição. Default=3.
-- `-v --verbose`: Mostra mensagens de debugging. Default=false.
-- `-n --noise_reduction`: Define a intensidade da redução de ruído (0.0-1.0). Default=0.75.
-- `-l --language`: Define o idioma para transcrição (ex: 'pt', 'en'). Default='auto'.
-- `-p --port`: Define a porta para a API HTTP. Default=5000.
+- `-r or --rate`: Sets the sampling rate in Hz. Default value is 16000.
+- `-c or --chunk`: Defines the audio block size in bytes. Default value is 1024.
+- `-b or --buffer`: Specifies the buffer duration in seconds. Default value is 5.
+- `-m or --model`: Selects the Whisper model ('tiny', 'base', etc.). Default is 'tiny'.
+- `-sd or --silence_threshold`: Sets the silence threshold for stopping transcription. Default value is 'auto'.
+- `-st or --silence_timeout`: Defines the time in seconds to consider audio as silent before stopping transcription. Default is 3.
+- `-v or --verbose`: Shows debugging messages. Default is false (off).
+- `-n or --noise_reduction`: Specifies the noise reduction intensity, ranging from 0.0 to 1.0. Default is 0.75.
+- `-l or --language`: Defines the language for transcription (e.g., 'pt' for Portuguese, 'en' for English). Default is 'auto'.
+- `-p or --port`: Sets the HTTP API port number. Default value is 5000.
 
 
 ### Accessing and Configuring
@@ -87,19 +88,22 @@ This project aims at providing an efficient and lightweight audio transcription 
    - Recording audio data in chunks when speech is detected and processing them in parallel or sequentially based on the `process_audio` method choice.
    - Processing of captured audio with noise reduction (if applicable), model transcription, and text delivery to connected clients using an event-driven approach for efficiency and low latency.
 
-## Dependências
 
-O projeto utiliza várias bibliotecas para execução. Aqui estão algumas delas:
+## Dependencies
 
-- [OpenAI's Whisper](https://github.com/openai/whisper) - Biblioteca de transcrição.
-- [Flask](https://flask.palletsprojects.com/) - Framework web Python.
-- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/) - Middleware para permitir o acesso ao servidor via frontend.
-- [Pydantic](https://pydantic-docs.helpmanual.io/) - Biblioteca de validação e conversão de tipos.
+The project relies on several libraries for execution:
 
+1. **OpenAI's Whisper** ([Whisper GitHub Repository](https://github.com/openai/whisper)): A transcription library by OpenAI.
+2. **Flask** ([Flask Documentation](https://flask.palletsprojects.com/en/2.0.x/)): A lightweight web framework for Python.
+3. **Flask-CORS** ([Flask-CORS Documentation](https://flask-cors.readthedocs.io/en/latest/)): A Flask extension to enable cross-origin resource sharing from the frontend.
+4. **Pydantic** ([Pydantic Documentation](https://pydantic-docs.helpmanual.io/)): A library for type validation and conversion.
 
-## Contribuição
+## Contributing
 
-Contribuições são bem-vindas! Se você encontrar um problema ou tiver sugestões, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Contributions are highly appreciated! If you encounter any issues or have suggestions, please don't hesitate to:
+
+- Open an issue on the project's repository.
+- Submit a pull request with your changes.
 
 
 

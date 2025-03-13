@@ -13,10 +13,10 @@ cd whisper-server
 
 Ensure you have Python 3 installed and a virtual environment created if preferred:
 ```bash
-python -m venv venv
+python -m venv .venv
 
 # On Unix or MacOS
-source venv/bin/activate
+source .venv/bin/activate
 
 # On Windows
 .\venv\Scripts\activate
